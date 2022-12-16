@@ -1,20 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import 'app/routes/app_pages.dart';
 
-void main() {
+Future<void> main() async {
   // Wait for bindings
   WidgetsFlutterBinding.ensureInitialized();
 
   //Set portrait mode
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
+  //init firebase
+  await Firebase.initializeApp();
+
   runApp(
     ScreenUtilInit(
-      // xd art board size
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
